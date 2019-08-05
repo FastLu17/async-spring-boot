@@ -8,7 +8,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 /**
- * 尽量使用@Aysnc的方式进行异步处理、
+ * 尽量使用@Aysnc的方式进行异步处理、(必须要有@EnableAysnc注解)
+ * <p>
  * 使用@Async 需要满足： 在A类中使用 B类的某个(@Async)方法,与@Transactional类似
  *
  * @author 小66
