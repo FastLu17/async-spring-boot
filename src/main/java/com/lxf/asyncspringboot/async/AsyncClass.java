@@ -8,6 +8,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 /**
+ * 尽量使用@Aysnc的方式进行异步处理、
+ * 使用@Async 需要满足： 在A类中使用 B类的某个(@Async)方法,与@Transactional类似
+ *
  * @author 小66
  * @create 2019-08-05 13:41
  **/
@@ -37,7 +40,8 @@ public class AsyncClass {
     }
 
     /**
-     *  利用spring的异步操作,必须使用@Async和@EnableAsync注解
+     * 利用spring的异步操作,必须使用@Async和@EnableAsync注解
+     *
      * @param sleep
      */
     @Async
@@ -52,7 +56,8 @@ public class AsyncClass {
     }
 
     /**
-     *  利用线程池进行异步操作时,不需要@Async和@EnableAsync注解
+     * 利用线程池进行异步操作时,不需要@Async和@EnableAsync注解
+     *
      * @param sleep
      */
     public void threadAsyncMethod(Long sleep) {
@@ -68,11 +73,12 @@ public class AsyncClass {
     }
 
     /**
-     *   进行异步操作,并获取返回值、
-     * @return
+     * 进行异步操作,并获取返回值、
+     *
+     * @return Future<T>、可以通过future.get() 获取T对象、
      */
     @Async
-    public Future<String> asyncCallback(){
+    public Future<String> asyncCallback() {
 
         return new AsyncResult<>("异步操作执行完成");
     }

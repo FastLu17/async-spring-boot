@@ -11,6 +11,8 @@ import java.util.Random;
 import java.util.concurrent.Executors;
 
 /**
+ * 测试使用@Async注解方式和Executors线程池方式 完成异步调用、
+ *
  * @author 小66
  * @create 2019-08-05 13:44
  **/
@@ -49,7 +51,7 @@ public class AsyncController {
         return "ThreadAsync 耗时 :" + (System.currentTimeMillis() - timeMillis);
     }
 
-    @GetMapping
+    @GetMapping("/longList")
     public String index() {
         long startMillis = System.currentTimeMillis();
         this.longList = getListAsync();
