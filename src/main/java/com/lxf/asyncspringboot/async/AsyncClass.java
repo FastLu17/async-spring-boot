@@ -1,9 +1,11 @@
 package com.lxf.asyncspringboot.async;
 
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 /**
  * @author 小66
@@ -65,5 +67,14 @@ public class AsyncClass {
         });
     }
 
+    /**
+     *   进行异步操作,并获取返回值、
+     * @return
+     */
+    @Async
+    public Future<String> asyncCallback(){
+
+        return new AsyncResult<>("异步操作执行完成");
+    }
 
 }
