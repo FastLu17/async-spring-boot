@@ -1,5 +1,6 @@
 package com.lxf.asyncspringboot.async;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Component;
@@ -17,27 +18,28 @@ import java.util.concurrent.Future;
  **/
 
 @Component
+@Slf4j
 public class AsyncClass {
 
-    @Async
+    @Async(value = "taskExecutor")
     public void asyncMethod_1() throws InterruptedException {
         long timeMillis = System.currentTimeMillis();
         Thread.sleep(1000);
-        System.out.println("asyncMethod_1 totalMillis = " + (System.currentTimeMillis() - timeMillis));
+        log.info("asyncMethod_1 totalMillis = " + (System.currentTimeMillis() - timeMillis));
     }
 
-    @Async
+    @Async(value = "taskExecutor")//是否指定具体的线程池,都会使用config中配置的线程池。
     public void asyncMethod_2() throws InterruptedException {
         long timeMillis = System.currentTimeMillis();
         Thread.sleep(2000);
-        System.out.println("asyncMethod_2 totalMillis = " + (System.currentTimeMillis() - timeMillis));
+        log.info("asyncMethod_2 totalMillis = " + (System.currentTimeMillis() - timeMillis));
     }
 
     @Async
     public void asyncMethod_3() throws InterruptedException {
         long timeMillis = System.currentTimeMillis();
         Thread.sleep(3000);
-        System.out.println("asyncMethod_3 totalMillis = " + (System.currentTimeMillis() - timeMillis));
+        log.info("asyncMethod_3 totalMillis = " + (System.currentTimeMillis() - timeMillis));
     }
 
     /**

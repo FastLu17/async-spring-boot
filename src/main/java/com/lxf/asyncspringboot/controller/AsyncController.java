@@ -1,6 +1,7 @@
 package com.lxf.asyncspringboot.controller;
 
 import com.lxf.asyncspringboot.async.AsyncClass;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +18,7 @@ import java.util.concurrent.Executors;
  * @create 2019-08-05 13:44
  **/
 @RestController
+@Slf4j
 public class AsyncController {
 
     private List<Long> longList;
@@ -26,7 +28,7 @@ public class AsyncController {
 
     @GetMapping("/annotation")
     public String startAnnotationAsync() throws InterruptedException {
-        System.out.println("longList = " + longList.size());
+
         long timeMillis = System.currentTimeMillis();
         asyncClass.asyncMethod_3();
         asyncClass.asyncMethod_2();
