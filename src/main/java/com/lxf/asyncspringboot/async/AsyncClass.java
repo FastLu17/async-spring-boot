@@ -12,6 +12,8 @@ import java.util.concurrent.Future;
  * 尽量使用@Aysnc的方式进行异步处理、(必须要有@EnableAysnc注解)
  * <p>
  * 使用@Async 需要满足： 在A类中使用 B类的某个(@Async)方法,与@Transactional类似
+ * <p>
+ * 在使用异步类时,不能使用new的方式创建、只能使用@AutoWired注入、否则导致@Async失效
  *
  * @author 小66
  * @create 2019-08-05 13:41
